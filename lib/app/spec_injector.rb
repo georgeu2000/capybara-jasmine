@@ -4,7 +4,6 @@ class SpecInjector
   end
 
   def call env
-    ap :call
     @env = env
     
     status, headers, response = @app.call( env )
@@ -48,18 +47,18 @@ class SpecInjector
 
   def jasmine_requires_files
     [ 
-      # 'vendor/jquery.2.1.3.min.js',
+      'vendor/jquery.2.1.3.min.js',
       'jasmine_lib/jasmine.js' ,
-      # 'jasmine_lib/jasmine-html.js',
-      # 'jasmine_lib/boot.js',
-      # 'jasmine_lib/mock-ajax.js',
-      # 'js/SharedHelpers.js' 
+      'jasmine_lib/jasmine-html.js',
+      'jasmine_lib/boot.js',
+      'jasmine_lib/mock-ajax.js',
+      'js/SharedHelpers.js' 
     ]
   end
 
   def jasmine_requires
     "\n" + jasmine_requires_files.map do |f|
-      "<script src='/capybara-jasmine/#{ f }'></script>"
+      "<script src='/capybara-jasmine-files/#{ f }'></script>"
     end.join( "\n" )
   end
 end
