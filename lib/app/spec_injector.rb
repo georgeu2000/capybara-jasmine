@@ -11,14 +11,14 @@ class SpecInjector
     if status != 200
       puts red( "capybara-jasmine HTTP request error: #{ status } #{ env[ 'PATH_INFO' ] }")
     else
-      puts green( "capybara-jasmine HTTP request success: #{ status } #{ env[ 'PATH_INFO' ] }")
+      # puts green( "capybara-jasmine HTTP request success: #{ status } #{ env[ 'PATH_INFO' ] }")
     end
 
-    if env[ 'HTTP_ACCEPT' ] && env[ 'HTTP_ACCEPT' ].include?( 'text/html' )
+    if headers[ 'Content-Type' ] && headers[ 'Content-Type' ].include?( 'text/html' )
       body = body_for( response )
       
       headers[ 'Content-Length' ] = body.length.to_s
-      
+
       [ status, headers, [ body ]]
     else  
       [ status, headers, response ]
@@ -52,7 +52,8 @@ class SpecInjector
       'jasmine_lib/jasmine-html.js',
       'jasmine_lib/boot.js',
       'jasmine_lib/mock-ajax.js',
-      'js/SharedHelpers.js' 
+      'js/SharedHelpers.js',
+      'js/test.js'
     ]
   end
 
