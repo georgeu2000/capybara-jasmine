@@ -6,7 +6,7 @@ end
 def display_js_errors
   return unless Capybara.current_driver.match /webkit/
 
-  if page.driver.error_messages.present?
+  if page.driver.error_messages.any?
     puts red 'Javascript errors:'
   else
     puts cyan 'No Javascript errors.'
@@ -24,7 +24,7 @@ end
 def display_js_console
   return unless Capybara.current_driver == :webkit
 
-  if page.driver.console_messages.present?
+  if page.driver.console_messages.any?
     puts magenta( "Javascript console:")
   end
 
@@ -39,7 +39,7 @@ def display_jasmine_specs
 end
 
 def jasmine_result
-  result = js_body.match( /\d+\s+specs?,\s+\d+\s+failures?/ ).to_s
+  result = js_html.match( /\d+\s+specs?,\s+\d+\s+failures?/ ).to_s
 
   if result.match /,\s+0 failure/
     "Jasmine Success: #{ result }"
@@ -49,22 +49,22 @@ def jasmine_result
 end
 
 def jasmine_failures
-  html_doc = Nokogiri::HTML( js_body )
+  html_doc = Nokogiri::HTML( js_html )
   html_doc.css( 'div .result-message' )
           .map{|div| "  #{ div.text }"}
           .join( "\n" )
 end
 
 def jasmine_suites
-  html_doc = Nokogiri::HTML( js_body )
+  html_doc = Nokogiri::HTML( js_html )
   html_doc.css( 'div .suite' ).map do | suite |
     suite.at_css( '.suite-detail' ).text +
     suite.css( 'ul.specs' ).map{| spec | "\n  #{ spec.text }"}.join
   end.join
 end
 
-def js_body
-  page.evaluate_script( 'document.documentElement.innerHTML' )
+def js_html
+  page.evaluate_script( 'document.documentElement.outerHTML' )
 end
 
 def color_print text

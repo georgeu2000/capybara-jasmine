@@ -24,14 +24,15 @@ class SpecInjector
   end
 
   def specs
-    return []  if @env[ 'HTTP_X_SPECS' ].blank?
+    return [] if @env[ 'HTTP_X_SPECS' ].nil?
 
     @env[ 'HTTP_X_SPECS' ].split( ',' ).map( &:strip )
   end
 
   def body_for response
     body = ''
-    response.each{| p | body += p.gsub( '<head>', "#{ spec_js }#{ header_specs }<head>" )}
+
+    response.each{| p | body += p.gsub( '<head>', "<head>#{ jasmine_requires }#{ header_specs }" )}
 
     body
   end
@@ -42,7 +43,27 @@ class SpecInjector
     end.join( "\n" )
   end
 
-  def spec_js
-    File.read 'spec/jasmine/app/jasmine_requires.js'
-  end 
+  def jasmine_requires_files
+    [ 
+      'jasmine_lib/jasmine.js' ,
+      'jasmine_lib/jasmine-html.js',
+      'jasmine_lib/boot.js',
+      # 'jasmine_lib/mock-ajax.js',
+      'js/SharedHelpers.js' 
+    ]
+  end
+
+  def jasmine_requires
+    jasmine_requires_files.map do |f|
+      '<script>' + File.read( "#{ gem_dir }/lib/#{ f }") + '</script>'
+    end.join
+  end
+
+  # def spec_js
+  #   File.read "#{ gem_dir }/lib/app/jasmine_requires.js"
+  # end
+
+  def gem_dir
+    '../../gems/capybara-jasmine'
+  end
 end

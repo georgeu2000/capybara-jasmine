@@ -1,7 +1,7 @@
  Gem::Specification.new do |s|
   s.name        = 'capybara-jasmine'
-  s.version     = '0.0.1'
-  s.date        = '2015-05-01'
+  s.version     = '0.0.3'
+  s.date        = '2015-05-02'
   s.summary     = 'Run Jasmine specs with Capybara.'
   s.description = 'This gem allows you to run Jasmine specs with Capybara for a Rack app.'
   s.authors     = ['George Ulmer']

@@ -1,9 +1,9 @@
 def capybara_app
-  Rack::Builder.new{
+  Rack::Builder.new do
     use SpecInjector
-    use Rack::Static, urls:static_paths,   root:'public'
     use Rack::Static, urls:[ '/jasmine' ], root:'spec'
     
-    run BetterPRWriter
-  }.to_app
+    use Rack::Static, root:'public'
+    run App
+  end.to_app
 end
