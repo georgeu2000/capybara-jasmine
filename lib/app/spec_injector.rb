@@ -4,12 +4,15 @@ class SpecInjector
   end
 
   def call env
+    ap :call
     @env = env
     
     status, headers, response = @app.call( env )
 
     if status != 200
-      puts red( "#{ env[ 'PATH_INFO' ] } #{ status }")
+      puts red( "capybara-jasmine HTTP request error: #{ status } #{ env[ 'PATH_INFO' ] }")
+    else
+      puts green( "capybara-jasmine HTTP request success: #{ status } #{ env[ 'PATH_INFO' ] }")
     end
 
     if env[ 'HTTP_ACCEPT' ] && env[ 'HTTP_ACCEPT' ].include?( 'text/html' )
@@ -38,32 +41,25 @@ class SpecInjector
   end
 
   def header_specs
-    specs.map do |spec|
+    "\n" + specs.map do |spec|
       "<script src='/jasmine/js/#{ spec }.js'></script>"
-    end.join( "\n" )
+    end.join( "\n" ) + "\n"
   end
 
   def jasmine_requires_files
     [ 
+      # 'vendor/jquery.2.1.3.min.js',
       'jasmine_lib/jasmine.js' ,
-      'jasmine_lib/jasmine-html.js',
-      'jasmine_lib/boot.js',
+      # 'jasmine_lib/jasmine-html.js',
+      # 'jasmine_lib/boot.js',
       # 'jasmine_lib/mock-ajax.js',
-      'js/SharedHelpers.js' 
+      # 'js/SharedHelpers.js' 
     ]
   end
 
   def jasmine_requires
-    jasmine_requires_files.map do |f|
-      '<script>' + File.read( "#{ gem_dir }/lib/#{ f }") + '</script>'
-    end.join
-  end
-
-  # def spec_js
-  #   File.read "#{ gem_dir }/lib/app/jasmine_requires.js"
-  # end
-
-  def gem_dir
-    '../../gems/capybara-jasmine'
+    "\n" + jasmine_requires_files.map do |f|
+      "<script src='/capybara-jasmine/#{ f }'></script>"
+    end.join( "\n" )
   end
 end

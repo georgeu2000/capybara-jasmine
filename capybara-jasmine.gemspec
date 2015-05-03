@@ -17,4 +17,5 @@
   s.add_dependency 'capybara', ['2.4.4']
   s.add_dependency 'capybara-webkit', ['1.5.0']
   s.add_dependency 'selenium-webdriver', ['2.45.0']
+  s.add_dependency 'awesome_print', ['1.6.1']
 end
