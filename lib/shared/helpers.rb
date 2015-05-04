@@ -69,7 +69,7 @@ end
 
 def color_print text
   unless text.match /failure/
-    puts red( 'Jasmine specs failed to run.' )
+    puts red( "Jasmine specs failed to run for #{ self.inspect }." )
     return
   end
 
