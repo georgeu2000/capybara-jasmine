@@ -8,9 +8,7 @@ def capybara_app
   end.to_app
 end
 
+
 def gem_dir
   File.join(File.dirname(File.expand_path(__FILE__)), '../../lib')
 end
-
-# puts `ls -l #{ gem_dir }`
-# puts `ls -l #{ gem_dir }/jasmine_lib`

@@ -52,8 +52,7 @@ class SpecInjector
       'jasmine_lib/jasmine-html.js',
       'jasmine_lib/boot.js',
       'jasmine_lib/mock-ajax.js',
-      'js/SharedHelpers.js',
-      'js/test.js'
+      'js/SharedHelpers.js'
     ]
   end
 
