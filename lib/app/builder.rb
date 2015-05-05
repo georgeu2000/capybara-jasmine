@@ -12,3 +12,5 @@ end
 def gem_dir
   File.join(File.dirname(File.expand_path(__FILE__)), '../../lib')
 end
+
+ap gem_dir
