@@ -2,6 +2,8 @@
 
 This gem uses Capybara to run Jasmine specs. Request a page once, run many JS specs. Works with RSpec and [Jasmine AJAX](https://github.com/jasmine/jasmine-ajax).
 
+Please see [Capybara-Jasmine Demo](https://github.com/georgeu2000/capybara-jasmine-demo) to see how to integrate into an app.
+
 ##Why?
 Capybara is a powerful tool, but I find it very tedious and slow, especially for JS testing. This is mostly due to the fact that loading a page for each spec is very time consuming.
 
