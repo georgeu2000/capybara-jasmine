@@ -10,7 +10,7 @@ end
 
 
 def gem_dir
-  File.join(File.dirname(File.expand_path(__FILE__)), '../../lib')
+  File.join(File.dirname(File.expand_path(__FILE__)), '..')
 end
 
 ap gem_dir
