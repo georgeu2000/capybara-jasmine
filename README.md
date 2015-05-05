@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/georgeu2000/capybara-jasmine/badges/gpa.svg)](https://codeclimate.com/github/georgeu2000/capybara-jasmine)
+
 # Capybara-Jasmine
 
 This gem uses Capybara to run Jasmine specs. Request a page once, run many JS specs. Works with RSpec and [Jasmine AJAX](https://github.com/jasmine/jasmine-ajax).
