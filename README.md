@@ -47,6 +47,6 @@ Capybara-Jasmine uses with RSpec and WebKit.
 1. Click link or button. Takes a finder:
      `Click('#logo');`  
 
-Sample output:
+##Sample output
 
 ![Sample Output](https://cloud.githubusercontent.com/assets/794632/7466568/67d42404-f29a-11e4-9836-83d6e6cb35da.png)
