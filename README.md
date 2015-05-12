@@ -1,5 +1,7 @@
 [![Code Climate](https://codeclimate.com/github/georgeu2000/capybara-jasmine/badges/gpa.svg)](https://codeclimate.com/github/georgeu2000/capybara-jasmine)
 
+[![Gem Version](https://badge.fury.io/rb/capybara-jasmine.svg)](http://badge.fury.io/rb/capybara-jasmine)
+
 # Capybara-Jasmine
 
 This gem uses Capybara to run Jasmine specs. Request a page once, run many JS specs. Works with RSpec and [Jasmine AJAX](https://github.com/jasmine/jasmine-ajax).
@@ -49,6 +51,6 @@ Capybara-Jasmine uses with RSpec and WebKit.
 1. Click link or button. Takes a finder:
      `Click('#logo');`  
 
-##Sample output
+##Sample Output
 
 ![Sample Output](https://cloud.githubusercontent.com/assets/794632/7466568/67d42404-f29a-11e4-9836-83d6e6cb35da.png)

@@ -7,7 +7,7 @@
   s.authors     = ['George Ulmer']
   s.email       = 'george@boost-media.com'
   s.files       = `git ls-files`.split($/)
-  s.homepage    = 'http://rubygems.org/gems/capybara-jasmine'
+  s.homepage    = 'https://github.com/georgeu2000/capybara-jasmine'
   s.license     = 'MIT'
 
   s.add_dependency 'rack', ['1.6.0']
