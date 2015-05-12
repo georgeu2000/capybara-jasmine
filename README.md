@@ -1,5 +1,4 @@
 [![Code Climate](https://codeclimate.com/github/georgeu2000/capybara-jasmine/badges/gpa.svg)](https://codeclimate.com/github/georgeu2000/capybara-jasmine)
-
 [![Gem Version](https://badge.fury.io/rb/capybara-jasmine.svg)](http://badge.fury.io/rb/capybara-jasmine)
 
 # Capybara-Jasmine
